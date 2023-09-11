@@ -1,5 +1,3 @@
-# object-detection-model-serving-yolov5
-
 # YOLOv5 Model Serving on RHODS
 
 This repository provides instructions & examples on how to deploy a YOLOv5 model (or a model retrained from it) using RHODS Model Serving, and how to query it both with and **gRPC** and **REST**.

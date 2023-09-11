@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- project-create
+- minio
+- notebook
+- model-server
+- pipelines
+
+# patches:
+#   - target:
+#       kind: OdhDashboardConfig
+#       name: odh-dashboard-config
+#     patch: |-
+#       - op: replace
+#         path: /metadata/namespace
+#         value: redhat-ods-applications
+

@@ -1,0 +1,16 @@
+numpy
+onnx
+onnxruntime
+opencv_python_headless
+seaborn
+torch
+torchvision
+flatbuffers<3.0,>=1.12
+minio==7.1.*
+numpy==1.23.*
+pandas==2.0.*
+pandas-datareader==0.10.*
+scikit-learn==1.3.*
+tensorflow==2.11.*
+tf2onnx==1.14.*
+yfinance==0.2.23

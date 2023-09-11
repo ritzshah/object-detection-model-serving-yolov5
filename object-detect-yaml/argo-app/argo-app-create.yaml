@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: object-detection-yolov5
+spec:
+  destination:
+    name: ''
+    namespace: object-detection-yolov5
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: object-detect-yaml
+    repoURL: 'https://github.com/ritzshah/object-detection-yolov5-model-serving.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+

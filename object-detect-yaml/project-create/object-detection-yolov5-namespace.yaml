@@ -1,0 +1,13 @@
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  annotations:
+    openshift.io/description: "Tekton pipelines for Data Science"
+    openshift.io/requester: argocd
+    openshift.io/display-name: object-detection-yolov5
+    argocd.argoproj.io/sync-wave: "-1"    
+  labels:
+    kubernetes.io/metadata.name: object-detection-yolov5
+    modelmesh-enabled: "true"
+    opendatahub.io/dashboard: "true"
+  name: object-detection-yolov5
