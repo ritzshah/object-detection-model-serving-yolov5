@@ -19,4 +19,4 @@ spec:
       runtime: object-detection-model-server
       storage:
         key: minio-connection
-        path: yolov5n.onnx
+        path: yolov5/yolov5n.onnx
