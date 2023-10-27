@@ -81,8 +81,8 @@ Here are a few elements to help you choose between the two available interfaces 
 
 Change the git url in git clone command within this folder or set env variable before running kustomization  for kustomize yaml scripts located here : deployment-yaml
 
-You can set these variables  before running oc apply -k deployment
-guid 
-subdomain_base_suffix
+<p>You can set these variables before running oc apply -k deployment</p>
+<p>guid</p> 
+<p>subdomain_base_suffix</p>
 
 This should help set the setup-buckets-job.yaml specific required variables in minio folder.
