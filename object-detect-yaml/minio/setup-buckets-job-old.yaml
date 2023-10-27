@@ -58,15 +58,12 @@ spec:
           args:
             - -ec
             - |-
-              git clone https://gitea.apps.cluster-sbc4q.sandbox81.opentlc.com/lab-user/object-detection-model-serving-yolov5.git object-detection-yolov5-model-serving
-
               env | grep MINIO
               cat << 'EOF' | python3
               import boto3, os, subprocess
               from git import Repo
               url = 'https://github.com/ritzshah/object-detection-yolov5-model-serving.git'
               local_dir = 'object-detection-yolov5-model-serving'
-              s3_bucket_path = 'models/yolov5'
 
               s3 = boto3.client("s3",
                                 endpoint_url="http://minio.object-detection-yolov5.svc.cluster.local:9000",
@@ -80,21 +77,18 @@ spec:
               print('creating models bucket')
               if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
                 s3.create_bucket(Bucket=bucket)
-              # Creating folder 'yolov5' within 'models' bucket
-              print('creating models/yolov5')
-              s3.put_object(Bucket=bucket, Key='yolov5/')
-
-              # Copy file to S3 bucket
-              print('copy model from local folder to S3 bucket models/yolov5')
-              s3.upload_file('/opt/app-root/src/object-detection-yolov5-model-serving/yolov5n.onnx', bucket, 'yolov5/yolov5n.onnx')
-
               bucket = 'data'
               print('creating data bucket')
               if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
                 s3.create_bucket(Bucket=bucket)
 
-              # Run the git clone command using subprocess
-              #subprocess.run(['git', 'clone', url, local_dir])
+	      # Run the git clone command using subprocess
+              subprocess.run(['git', 'clone', url, local_dir])
+
+              #Repo.clone_from('https://github.com/ritzshah/object-detection-yolov5-model-serving.git', 'object-detection-yolov5-model-serving', branch='master') 
+              
+	      # Copy file to S3 bucket
+              s3.upload_file('/opt/app-root/src/object-detection-yolov5-model-serving/yolov5n.onnx', 'models', 'yolov5n.onnx')
               EOF
           envFrom:
             - secretRef:
