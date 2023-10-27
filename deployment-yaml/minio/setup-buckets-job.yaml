@@ -58,14 +58,15 @@ spec:
           args:
             - -ec
             - |-
-              git clone https://gitea.apps.cluster-sbc4q.sandbox81.opentlc.com/lab-user/object-detection-model-serving-yolov5.git object-detection-yolov5-model-serving
+              #git clone https://gitea.apps.cluster-sbc4q.sandbox81.opentlc.com/lab-user/big-data-model-deployment.git model-serving
+              git clone https://gitea.apps.cluster-{{ guid }}.{{ subdomain_base_suffix }}/lab-user/big-data-model-deployment.git model-serving
 
               env | grep MINIO
               cat << 'EOF' | python3
               import boto3, os, subprocess
               from git import Repo
-              url = 'https://github.com/ritzshah/object-detection-yolov5-model-serving.git'
-              local_dir = 'object-detection-yolov5-model-serving'
+              url = 'https://gitea.apps.cluster-sbc4q.sandbox81.opentlc.com/lab-user/big-data-model-deployment.git'
+              local_dir = 'model-serving'
               s3_bucket_path = 'models/yolov5'
 
               s3 = boto3.client("s3",
@@ -86,7 +87,7 @@ spec:
 
               # Copy file to S3 bucket
               print('copy model from local folder to S3 bucket models/yolov5')
-              s3.upload_file('/opt/app-root/src/object-detection-yolov5-model-serving/yolov5n.onnx', bucket, 'yolov5/yolov5n.onnx')
+              s3.upload_file('/opt/app-root/src/model-serving/yolov5n.onnx', bucket, 'yolov5/yolov5n.onnx')
 
               bucket = 'data'
               print('creating data bucket')

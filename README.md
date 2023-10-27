@@ -79,5 +79,10 @@ Here are a few elements to help you choose between the two available interfaces 
 - If you want to query the model directly from outside OpenShift, you have to use REST which is the only one exposed. You can expose gRPC too, but it's kind of difficult right now.
 - gRPC is **wwwwwaaaayyyyy much faster** than REST. With the exact same model serving instance, as showed in the notebooks, inferences are about 30x faster. That is huge when you have score of images to process.
 
-Change the git url in git clone command within this filder before running kustomization : object-detect-yaml/minio/setup-buckets-job.yaml
-git clone https://gitea.apps.cluster-sbc4q.sandbox81.opentlc.com/lab-user/object-detection-model-serving-yolov5.git object-detection-yolov5-model-serving
+Change the git url in git clone command within this folder or set env variable before running kustomization  for kustomize yaml scripts located here : deployment-yaml
+
+You can set these variables  before running oc apply -k deployment
+guid 
+subdomain_base_suffix
+
+This should help set the setup-buckets-job.yaml specific required variables in minio folder.
