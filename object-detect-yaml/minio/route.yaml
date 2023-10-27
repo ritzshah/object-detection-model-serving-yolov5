@@ -3,6 +3,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: minio-console
+  namespace: object-detection-yolov5
   labels:
     app: minio
 spec:

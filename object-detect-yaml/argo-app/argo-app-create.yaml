@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: object-detect-yaml
-    repoURL: 'https://github.com/ritzshah/object-detection-yolov5-model-serving.git'
+    repoURL: 'https://github.com/ritzshah/object-detection-model-serving-yolov5.git'
     targetRevision: HEAD
   sources: []
   project: default
