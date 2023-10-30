@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - project-create
+- secret-create
 - minio
 - notebook
 - model-server
@@ -17,3 +18,8 @@ resources:
 #         path: /metadata/namespace
 #         value: redhat-ods-applications
 
+patches:
+- path: project-hook.yaml
+  target:
+    kind: Project
+    name: object-detection-yolov5

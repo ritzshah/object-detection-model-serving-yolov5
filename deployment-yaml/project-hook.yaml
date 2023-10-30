@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: check-project-job
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  template:
+    spec:
+      containers:
+      - name: check-project-container
+        image: your_image
+        command: ['sh', '-c', 'while [ -z "$(oc get project object-detection-yolov5 -o name 2>/dev/null)" ]; do echo "Waiting for project to be created"; sleep 5; done;']
+      restartPolicy: Never
