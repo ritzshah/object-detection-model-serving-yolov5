@@ -58,8 +58,8 @@ spec:
           args:
             - -ec
             - |-
-              #git clone https://gitea.apps.cluster-sbc4q.sandbox81.opentlc.com/lab-user/big-data-model-deployment.git model-serving
-              git clone https://gitea.apps.cluster-{{ guid }}.{{ subdomain_base_suffix }}/lab-user/big-data-model-deployment.git model-serving
+              #git clone https://gitea.apps.cluster-wwfmc.sandbox1838.opentlc.com/lab-user/big-data-model-deployment.git model-serving
+              git clone https://gitea.apps.cluster-wwfmc.sandbox1838.opentlc.com/lab-user/big-data-model-deployment.git model-serving
 
               env | grep MINIO
               cat << 'EOF' | python3
