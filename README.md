@@ -79,10 +79,11 @@ Here are a few elements to help you choose between the two available interfaces 
 - If you want to query the model directly from outside OpenShift, you have to use REST which is the only one exposed. You can expose gRPC too, but it's kind of difficult right now.
 - gRPC is **wwwwwaaaayyyyy much faster** than REST. With the exact same model serving instance, as showed in the notebooks, inferences are about 30x faster. That is huge when you have score of images to process.
 
-Change the git url in git clone command within this folder or set env variable before running kustomization  for kustomize yaml scripts located here : deployment-yaml
+#####THINGS TO WATCH OUT BEFORE DEPLOYING THE deployment-yaml/setup.sh script of kstomization files.#####
+Update the git repo usign GUID and SANDBOX_ZONE from your provisioned data or your gitea url here minio/setup-bucket-configmap.yaml
 
-<p>You can set these variables before running oc apply -k deployment</p>
-<p>guid</p> 
-<p>subdomain_base_suffix</p>
+<p>You can set these variables before running setup.sh from deployment-yaml folder. To remove, use setup-delete.sh</p>
+<p>GUID</p> 
+<p>SUBDOMAIN_ZONE</p>
 
 This should help set the setup-buckets-job.yaml specific required variables in minio folder.

@@ -55,11 +55,26 @@ spec:
           image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:1.2
           imagePullPolicy: IfNotPresent
           command: [ "/bin/bash" ]
+          env:
+            - name: GUID
+              valueFrom:
+                configMapKeyRef:
+                  name: setup-bucket-config
+                  key: guid
+            - name: SANDBOX_ZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: setup-bucket-config
+                  key: sandbox_zone
           args:
             - -ec
             - |-
+              guid=$GUID
+              echo $GUID
+              echo $guid
+              sandbox_zone=$SANDBOX_ZONE
               #git clone https://gitea.apps.cluster-wwfmc.sandbox1838.opentlc.com/lab-user/big-data-model-deployment.git model-serving
-              git clone https://gitea.apps.cluster-wwfmc.sandbox1838.opentlc.com/lab-user/big-data-model-deployment.git model-serving
+              git clone https://gitea.apps.cluster-$(GUID).$(SANDBOX_ZONE)/lab-user/big-data-model-deployment.git model-serving
 
               env | grep MINIO
               cat << 'EOF' | python3
