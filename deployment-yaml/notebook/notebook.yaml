@@ -41,8 +41,8 @@ spec:
                               --ServerApp.quit_button=False
                               --ServerApp.tornado_settings={"user":"opentlc-2dmgr","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-cmlf6.sandbox1988.opentlc.com","hub_prefix":"/projects/object-detection-yolov5"}
         - name: JUPYTER_IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/tensorflow:2023.1
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/tensorflow:2023.1
+          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2023.1
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2023.1
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
